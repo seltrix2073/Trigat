@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Trigat Education Centre</title>
+
+  <style>
+    * { margin:0; padding:0; box-sizing:border-box; font-family:"Poppins",sans-serif; }
+
+    body {
+      min-height: 100vh;
+      background: #FFF8F0;
+      padding-top: 80px; /* space for fixed navbar */
+      overflow-x: hidden;
+    }
+
+    /* NAVBAR */
+    .navbar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: 1000;
+      padding: 18px 50px;
+      background: rgba(255,248,240,0.95);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-weight: 600;
+      letter-spacing: 1px;
+    }
+
+    .navbar .logo {
+      font-size: 30px;
+      color: #800000;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 28px;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: #800000;
+      font-size: 16px;
+      transition: color 0.3s ease;
+    }
+
+    .nav-links a:hover { color: #D4A017; }
+
+    /* MAIN FRAME */
+    .container {
+      width: 100%;
+      max-width: 1100px;
+      margin: 0 auto;
+      background: rgba(255, 255, 255, 0.85);
+      backdrop-filter: blur(12px);
+      border-radius: 30px;
+      padding: 80px 50px;
+      position: relative;
+      border: 12px solid #D4A017;
+      box-shadow: 0px 12px 35px rgba(0, 0, 0, 0.08),
+                  inset 0 0 10px rgba(212,160,23,0.15);
+      overflow: hidden;
+    }
+
+    /* LEAVES */
+    .leaf {
+      position: absolute;
+      width: 220px;
+      height: 220px;
+      background: radial-gradient(circle at 30% 30%, #C1DAB0, #2D6A4F);
+      border-radius: 0 100% 0 100%;
+      opacity: 1.00;
+      filter: blur(0px);
+      z-index: 0;
+    }
+
+    .leaf::after {
+      content: "";
+      position: absolute;
+      width: 6px;
+      height: 160px;
+      background: rgba(45, 106, 79, 0.4);
+      left: 50%;
+      top: 25px;
+      transform: translateX(-50%) rotate(20deg);
+      border-radius: 10px;
+    }
+
+    .leaf1 { top: -60px; left: -50px; transform: rotate(-15deg); }
+    .leaf2 { bottom: -60px; right: -50px; transform: rotate(35deg); }
+
+    /* CONTENT */
+    .content {
+      position: relative;
+      z-index: 2;
+      text-align: center;
+    }
+
+    .welcome {
+      font-size: 14px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      color: #2D6A4F;
+      margin-bottom: 12px;
+      text-transform: uppercase;
+    }
+
+    h1 {
+      font-size: 50px;
+      font-weight: 900;
+      color: #800000;
+      margin-bottom: 18px;
+      text-shadow: 1px 1px 6px rgba(0,0,0,0.06);
+    }
+
+    .subtitle {
+      font-size: 17px;
+      font-weight: 500;
+      color: #333333;
+      max-width: 720px;
+      margin: 0 auto 35px auto;
+      line-height: 1.7;
+    }
+
+    .established {
+      margin-top: 25px;
+      font-size: 16px;
+      font-weight: 700;
+      color: #2D6A4F;
+      background: rgba(212, 160, 23, 0.15);
+      border: 2px solid rgba(212, 160, 23, 0.4);
+      padding: 12px 22px;
+      border-radius: 60px;
+      display: inline-block;
+    }
+
+    /* CARDS */
+    .cards {
+      margin-top: 70px;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 28px;
+    }
+
+    .card {
+      padding: 28px;
+      border-radius: 22px;
+      background: rgba(255, 255, 255, 0.85);
+      border: 3px solid rgba(212,160,23,0.4);
+      box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.08);
+      transition: 0.3s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-10px);
+      border: 3px solid #D4A017;
+    }
+
+    .card h3 {
+      font-size: 20px;
+      font-weight: 900;
+      color: #800000;
+      margin-bottom: 12px;
+    }
+
+    .card p {
+      font-size: 15px;
+      color: #333333;
+      line-height: 1.7;
+      font-weight: 500;
+    }
+
+    /* FOOTER */
+    .footer {
+      margin-top: 60px;
+      font-size: 14px;
+      font-weight: 700;
+      color: #2D6A4F;
+    }
+
+    /* RESPONSIVE */
+    @media (max-width: 650px) {
+      body { padding-top: 90px; }
+      h1 { font-size: 38px; }
+      .container { padding: 60px 20px; }
+      .subtitle { font-size: 16px; margin-bottom: 25px; }
+      .nav-links { gap: 16px; flex-wrap: wrap; margin-top: 8px; }
+      .nav-links a { font-size: 14px; }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- NAVBAR -->
+  <header>
+    <nav class="navbar">
+      <div class="logo">TRIGAT</div>
+      <div class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="courses.html">Explore Courses</a>
+        <a href="gallery.html">Gallery</a>
+        <a href="about.html">About Us</a>
+        <a href="contact.html">Contact Us</a>
+      </div>
+    </nav>
+  </header>
+
+  <!-- LEAVES -->
+  <div class="leaf leaf1"></div>
+  <div class="leaf leaf2"></div>
+
+  <!-- MAIN CONTENT -->
+  <div class="container">
+    <div class="content">
+      <div class="welcome">WELCOME TO</div>
+      <h1>TRIGAT EDUCATION CENTRE</h1>
+      <p class="subtitle">
+        A premium boutique-style education centre focused on quality learning,
+        student growth, and academic excellence.
+      </p>
+      <div class="established">
+         Established in 2000 • Founder: Reena Dhiman 
+      </div>
+
+      <!-- CARDS -->
+      <div class="cards">
+        <div class="card">
+          <h3>Quality Teaching</h3>
+          <p>We provide strong fundamentals, personal attention, and effective teaching methods for all students.</p>
+        </div>
+        <div class="card">
+          <h3>Student Success</h3>
+          <p>Our goal is to build confidence, discipline, and excellence through a professional learning environment.</p>
+        </div>
+        <div class="card">
+          <h3>Trusted Since 2000</h3>
+          <p>Trigat Education Centre has been shaping bright futures for over 20+ years with dedication and results.</p>
+        </div>
+      </div>
+
+      <div class="footer">
+        © 2026 Trigat Education Centre • founded by Reena Dhiman
+      </div>
+    </div>
+  </div>
+
+</body>
+</html>

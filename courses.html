@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Trigat Education Centre - Courses</title>
+
+  <style>
+    * { margin:0; padding:0; box-sizing:border-box; font-family:"Poppins",sans-serif; }
+
+    body {
+      background:#FFF8F0;
+      padding-top:80px; /* space for fixed navbar */
+      overflow-x:hidden;
+    }
+
+    /* NAVBAR */
+    .navbar {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%;
+      z-index: 1000;
+      padding: 18px 50px;
+      background: rgba(255,248,240,0.95);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-weight: 600;
+      letter-spacing: 1px;
+    }
+    .navbar .logo { font-size:30px; color:#800000; font-weight:900; }
+    .nav-links { display:flex; gap:28px; }
+    .nav-links a {
+      text-decoration:none;
+      color:#800000;
+      font-size:16px;
+      transition: 0.3s;
+    }
+    .nav-links a:hover { color:#D4A017; }
+
+    /* Page Title */
+    .page-title { text-align:center; color:#800000; font-weight:900; font-size:42px; margin:40px 0 15px; }
+    .page-subtitle { text-align:center; color:#2D6A4F; font-weight:500; font-size:17px; max-width:720px; margin:0 auto 40px; }
+
+    /* Courses Grid */
+    .courses-container {
+      max-width:1100px;
+      margin:0 auto;
+      display:grid;
+      grid-template-columns:repeat(auto-fit, minmax(250px, 1fr));
+      gap:28px;
+      padding-bottom:50px;
+    }
+    .course-card {
+      background:#fff;
+      border-radius:22px;
+      border:4px solid #D4A017;
+      box-shadow:0px 8px 25px rgba(0,0,0,0.12);
+      overflow:hidden;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .course-card:hover {
+      transform:translateY(-8px);
+      box-shadow:0px 15px 35px rgba(0,0,0,0.25);
+    }
+    .course-card img {
+      width:100%;
+      height:200px;
+      object-fit:cover;
+      display:block;
+    }
+    .course-content {
+      padding:20px;
+      text-align:center;
+    }
+    .course-content h3 {
+      font-size:20px;
+      font-weight:900;
+      color:#800000;
+      margin-bottom:12px;
+    }
+    .course-content p {
+      font-size:15px;
+      color:#333;
+      line-height:1.7;
+      font-weight:500;
+    }
+
+    /* Footer */
+    .footer {
+      max-width:1100px;
+      margin:50px auto 20px;
+      text-align:center;
+      font-weight:700;
+      color:#2D6A4F;
+    }
+
+    /* Responsive */
+    @media(max-width:650px){
+      .navbar { flex-direction:column; gap:12px; padding:15px 25px; }
+      .nav-links { flex-wrap:wrap; justify-content:center; gap:16px; margin-top:8px; }
+      .course-card img{ height:150px; }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- NAVBAR -->
+  <header>
+    <nav class="navbar">
+      <div class="logo">TRIGAT</div>
+      <div class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="courses.html">Explore Courses</a>
+        <a href="gallery.html">Gallery</a>
+        <a href="about.html">About us</a>
+        <a href="contact.html">Contact Us</a>
+      </div>
+    </nav>
+  </header>
+
+  <!-- Page Title -->
+  <h1 class="page-title">Our Courses</h1>
+  <p class="page-subtitle">
+    Explore our premium courses designed to unlock creativity, skill, and professional growth.
+  </p>
+
+  <!-- Courses Section -->
+  <div class="courses-container">
+
+    <div class="course-card">
+      <img src="https://images.pexels.com/photos/2034538/pexels-photo-2034538.jpeg" alt="Fashion Designing">
+      <div class="course-content">
+        <h3>Fashion Designing</h3>
+        <p>Duration: 3 months / 6 months / 9 months / 1 year</p>
+      </div>
+    </div>
+
+    <div class="course-card">
+      <img src="https://images.pexels.com/photos/5034049/pexels-photo-5034049.jpeg" alt="Art & Craft">
+      <div class="course-content">
+        <h3>Art & Craft</h3>
+        <p>Duration: 3 months / 6 months / 9 months / 1 year</p>
+      </div>
+    </div>
+
+    <div class="course-card">
+      <img src="https://images.pexels.com/photos/33692584/pexels-photo-33692584.jpeg" alt="Beautician">
+      <div class="course-content">
+        <h3>Beautician</h3>
+        <p>Duration: 3 months / 6 months / 9 months / 1 year</p>
+      </div>
+    </div>
+
+    <div class="course-card">
+      <img src="https://images.pexels.com/photos/3693232/pexels-photo-3693232.jpeg" alt="Crochet">
+      <div class="course-content">
+        <h3>Crochet</h3>
+        <p>Duration: 3 months / 6 months / 9 months / 1 year</p>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="footer">
+    © 2026 Trigat Education Centre • Designed by Seltrix
+  </div>
+
+</body>
+</html>
