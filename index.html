@@ -11,7 +11,7 @@
     body {
       min-height: 100vh;
       background: #FFF8F0;
-      padding-top: 80px; 
+      padding-top: 80px;
       overflow-x: hidden;
     }
 
@@ -32,10 +32,7 @@
       letter-spacing: 1px;
     }
 
-    nav .logo {
-      font-size: 30px;
-      color: #800000;
-    }
+    nav .logo { font-size: 30px; color: #800000; }
 
     nav ul {
       display: flex;
@@ -58,7 +55,7 @@
       flex-direction: column;
       cursor: pointer;
       gap: 5px;
-      z-index: 1001;
+      z-index:1100;
     }
 
     .nav-toggle span {
@@ -69,15 +66,13 @@
       transition: all 0.3s ease;
     }
 
-    /* transform hamburger to cross */
-    .nav-toggle.open span:nth-child(1) {
+    /* CROSS ANIMATION */
+    .nav-toggle.active span:nth-child(1) {
       transform: rotate(45deg) translate(5px, 5px);
     }
-    .nav-toggle.open span:nth-child(2) {
-      opacity: 0;
-    }
-    .nav-toggle.open span:nth-child(3) {
-      transform: rotate(-45deg) translate(6px, -6px);
+    .nav-toggle.active span:nth-child(2) { opacity: 0; }
+    .nav-toggle.active span:nth-child(3) {
+      transform: rotate(-45deg) translate(5px, -5px);
     }
 
     /* MAIN FRAME */
@@ -103,10 +98,8 @@
       height: 220px;
       background: radial-gradient(circle at 30% 30%, #C1DAB0, #2D6A4F);
       border-radius: 0 100% 0 100%;
-      opacity: 1.00;
       z-index: 0;
     }
-
     .leaf::after {
       content: "";
       position: absolute;
@@ -118,17 +111,11 @@
       transform: translateX(-50%) rotate(20deg);
       border-radius: 10px;
     }
-
     .leaf1 { top: -60px; left: -50px; transform: rotate(-15deg); }
     .leaf2 { bottom: -60px; right: -50px; transform: rotate(35deg); }
 
     /* CONTENT */
-    .content {
-      position: relative;
-      z-index: 2;
-      text-align: center;
-    }
-
+    .content { position: relative; z-index: 2; text-align: center; }
     .welcome {
       font-size: 14px;
       font-weight: 700;
@@ -174,7 +161,6 @@
       grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
       gap: 28px;
     }
-
     .card {
       padding: 28px;
       border-radius: 22px;
@@ -183,38 +169,19 @@
       box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.08);
       transition: 0.3s ease;
     }
-
     .card:hover {
       transform: translateY(-10px);
       border: 3px solid #D4A017;
     }
-
-    .card h3 {
-      font-size: 20px;
-      font-weight: 900;
-      color: #800000;
-      margin-bottom: 12px;
-    }
-
-    .card p {
-      font-size: 15px;
-      color: #333333;
-      line-height: 1.7;
-      font-weight: 500;
-    }
+    .card h3 { font-size: 20px; font-weight: 900; color: #800000; margin-bottom: 12px; }
+    .card p { font-size: 15px; color: #333333; line-height: 1.7; font-weight: 500; }
 
     /* FOOTER */
-    .footer {
-      margin-top: 60px;
-      font-size: 14px;
-      font-weight: 700;
-      color: #2D6A4F;
-    }
+    .footer { margin-top: 60px; font-size: 14px; font-weight: 700; color: #2D6A4F; }
 
-    /* ===== RESPONSIVE ===== */
+    /* ===== RESPONSIVE / MOBILE MENU ===== */
     @media (max-width: 768px) {
       nav.navbar { padding: 15px 5%; }
-
       nav ul {
         position: fixed;
         top: 0;
@@ -222,26 +189,21 @@
         height: 100%;
         width: 220px;
         flex-direction: column;
-        background: #FFF8F0; /* creamy background */
+        background: #FFF3E0; /* creamy side menu */
         padding-top: 80px;
         gap: 25px;
         display: flex;
-        box-shadow: -2px 0 12px rgba(0,0,0,0.08);
         transition: 0.3s ease;
       }
-
       nav ul li a {
         display: block;
         padding: 15px 0;
-        color: #800000;
+        color: #800000; /* dark red text */
         text-align: center;
         font-weight: 700;
       }
-
       nav ul li a:hover { color: #D4A017; }
-
       nav ul.active { right: 0; }
-
       .nav-toggle { display: flex; }
     }
 
@@ -321,7 +283,7 @@
 
     toggle.addEventListener('click', () => {
       menu.classList.toggle('active');
-      toggle.classList.toggle('open'); // animate to cross
+      toggle.classList.toggle('active'); // cross animation
     });
   </script>
 
