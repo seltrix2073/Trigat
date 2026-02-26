@@ -2,119 +2,122 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Trigat Education Centre</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <style>
-    * { margin:0; padding:0; box-sizing:border-box; font-family:"Poppins",sans-serif; }
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: "Poppins", sans-serif;
+    }
 
     body {
-      min-height: 100vh;
       background: #FFF8F0;
       padding-top: 80px;
       overflow-x: hidden;
     }
 
-    /* NAVBAR */
+    /* ================= NAVBAR ================= */
+
     nav.navbar {
       position: fixed;
-      top:0;
-      left:0;
+      top: 0;
+      left: 0;
       width: 100%;
-      z-index: 1000;
       padding: 18px 50px;
-      background: rgba(255,248,240,0.95);
+      background: rgba(255, 248, 240, 0.95);
       box-shadow: 0 4px 12px rgba(0,0,0,0.08);
       display: flex;
       justify-content: space-between;
       align-items: center;
+      z-index: 1000;
     }
 
-    nav .logo {
-      font-size: 30px;
-      color: #800000;
+    .logo {
+      font-size: 28px;
       font-weight: 900;
+      color: #800000;
     }
 
-    nav ul {
+    /* Hamburger always visible */
+    .nav-toggle {
       display: flex;
-      gap: 28px;
+      flex-direction: column;
+      gap: 6px;
+      cursor: pointer;
+      z-index: 1200;
+    }
+
+    .nav-toggle span {
+      width: 28px;
+      height: 3px;
+      background: #800000;
+      border-radius: 4px;
+      transition: 0.3s ease;
+    }
+
+    /* Cross animation */
+    .nav-toggle.active span:nth-child(1) {
+      transform: rotate(45deg) translate(6px, 6px);
+    }
+
+    .nav-toggle.active span:nth-child(2) {
+      opacity: 0;
+    }
+
+    .nav-toggle.active span:nth-child(3) {
+      transform: rotate(-45deg) translate(6px, -6px);
+    }
+
+    /* Side Menu */
+    nav ul {
+      position: fixed;
+      top: 0;
+      right: -260px;
+      width: 260px;
+      height: 100%;
+      background: #FFF3E0; /* creamy */
       list-style: none;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding-top: 100px;
+      gap: 30px;
+      transition: right 0.3s ease;
+      z-index: 1100;
+    }
+
+    nav ul.active {
+      right: 0;
     }
 
     nav ul li a {
       text-decoration: none;
+      font-size: 18px;
+      font-weight: 700;
       color: #800000;
-      font-size: 16px;
-      font-weight: 600;
-      transition: color 0.3s;
+      transition: 0.3s;
     }
 
-    nav ul li a:hover { color: #D4A017; }
-
-    /* HAMBURGER MENU */
-    .nav-toggle {
-      display: none;
-      flex-direction: column;
-      gap: 5px;
-      cursor: pointer;
-      z-index: 1100;
+    nav ul li a:hover {
+      color: #D4A017;
     }
 
-    .nav-toggle span {
-      height: 3px;
-      width: 25px;
-      background: #800000;
-      border-radius: 3px;
-      transition: all 0.3s ease;
-    }
+    /* ================= MAIN CONTENT ================= */
 
-    .nav-toggle.active span:nth-child(1) {
-      transform: rotate(45deg) translate(5px,5px);
-    }
-    .nav-toggle.active span:nth-child(2) { opacity: 0; }
-    .nav-toggle.active span:nth-child(3) {
-      transform: rotate(-45deg) translate(5px,-5px);
-    }
-
-    /* SIDE MENU FOR MOBILE */
-    @media (max-width: 1024px) { /* make it trigger for all tablets and phones */
-      nav ul {
-        position: fixed;
-        top:0;
-        right: -260px;
-        width: 260px;
-        height: 100%;
-        flex-direction: column;
-        background: #FFF3E0; /* creamy */
-        padding-top: 80px;
-        gap: 25px;
-        transition: right 0.3s ease;
-      }
-
-      nav ul li a {
-        text-align: center;
-        font-size: 18px;
-        color: #800000;
-      }
-
-      nav ul.active { right: 0; }
-
-      .nav-toggle { display: flex; }
-    }
-
-    /* MAIN CONTAINER */
     .container {
-      width: 100%;
       max-width: 1100px;
-      margin: 0 auto;
+      margin: auto;
       background: rgba(255,255,255,0.85);
       backdrop-filter: blur(12px);
       border-radius: 30px;
       padding: 80px 50px;
-      position: relative;
       border: 12px solid #D4A017;
-      box-shadow: 0 12px 35px rgba(0,0,0,0.08), inset 0 0 10px rgba(212,160,23,0.15);
+      box-shadow: 0 12px 35px rgba(0,0,0,0.08),
+                  inset 0 0 10px rgba(212,160,23,0.15);
+      position: relative;
       overflow: hidden;
     }
 
@@ -124,49 +127,97 @@
       height: 220px;
       background: radial-gradient(circle at 30% 30%, #C1DAB0, #2D6A4F);
       border-radius: 0 100% 0 100%;
-      z-index:0;
+      z-index: 0;
     }
 
-    .leaf::after {
-      content:"";
-      position:absolute;
-      width:6px;
-      height:160px;
-      background: rgba(45,106,79,0.4);
-      left:50%;
-      top:25px;
-      transform: translateX(-50%) rotate(20deg);
-      border-radius:10px;
-    }
-
-    .leaf1 { top:-60px; left:-50px; transform: rotate(-15deg);}
-    .leaf2 { bottom:-60px; right:-50px; transform: rotate(35deg); }
+    .leaf1 { top: -60px; left: -50px; transform: rotate(-15deg); }
+    .leaf2 { bottom: -60px; right: -50px; transform: rotate(35deg); }
 
     .content {
       text-align: center;
       position: relative;
-      z-index:2;
+      z-index: 2;
     }
 
-    .welcome { font-size: 14px; font-weight: 700; letter-spacing: 2px; color:#2D6A4F; margin-bottom:12px; text-transform: uppercase;}
-    h1 { font-size:50px; font-weight:900; color:#800000; margin-bottom:18px;}
-    .subtitle { font-size:17px; font-weight:500; color:#333; max-width:720px; margin:0 auto 35px auto; line-height:1.7;}
-    .established { margin-top:25px; font-size:16px; font-weight:700; color:#2D6A4F; background: rgba(212,160,23,0.15); border:2px solid rgba(212,160,23,0.4); padding:12px 22px; border-radius:60px; display:inline-block; }
-
-    .cards { margin-top:70px; display:grid; grid-template-columns: repeat(auto-fit,minmax(250px,1fr)); gap:28px;}
-    .card { padding:28px; border-radius:22px; background: rgba(255,255,255,0.85); border:3px solid rgba(212,160,23,0.4); box-shadow:0 8px 20px rgba(0,0,0,0.08); transition:0.3s;}
-    .card:hover { transform: translateY(-10px); border:3px solid #D4A017; }
-    .card h3 { font-size:20px; font-weight:900; color:#800000; margin-bottom:12px;}
-    .card p { font-size:15px; font-weight:500; color:#333; line-height:1.7; }
-
-    .footer { margin-top:60px; font-size:14px; font-weight:700; color:#2D6A4F;}
-
-    @media(max-width:480px){
-      h1 { font-size:35px; }
-      .subtitle { font-size:12px; }
-      .card h3 { font-size:18px; }
-      .card p { font-size:12px; }
+    .welcome {
+      font-size: 14px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      color: #2D6A4F;
+      margin-bottom: 12px;
+      text-transform: uppercase;
     }
+
+    h1 {
+      font-size: 48px;
+      font-weight: 900;
+      color: #800000;
+      margin-bottom: 18px;
+    }
+
+    .subtitle {
+      font-size: 17px;
+      color: #333;
+      max-width: 720px;
+      margin: auto;
+      line-height: 1.7;
+    }
+
+    .established {
+      margin-top: 25px;
+      font-size: 16px;
+      font-weight: 700;
+      color: #2D6A4F;
+      background: rgba(212, 160, 23, 0.15);
+      padding: 12px 22px;
+      border-radius: 60px;
+      display: inline-block;
+    }
+
+    .cards {
+      margin-top: 60px;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 25px;
+    }
+
+    .card {
+      padding: 25px;
+      border-radius: 20px;
+      background: white;
+      border: 3px solid rgba(212,160,23,0.4);
+      transition: 0.3s;
+    }
+
+    .card:hover {
+      transform: translateY(-8px);
+      border-color: #D4A017;
+    }
+
+    .card h3 {
+      color: #800000;
+      margin-bottom: 10px;
+    }
+
+    .card p {
+      font-size: 14px;
+      color: #333;
+      line-height: 1.6;
+    }
+
+    .footer {
+      margin-top: 50px;
+      font-size: 14px;
+      color: #2D6A4F;
+      font-weight: 700;
+    }
+
+    /* Mobile text adjustment */
+    @media (max-width: 480px) {
+      h1 { font-size: 32px; }
+      .subtitle { font-size: 13px; }
+    }
+
   </style>
 </head>
 <body>
@@ -189,41 +240,53 @@
     </ul>
   </nav>
 
-  <div class="leaf leaf1"></div>
-  <div class="leaf leaf2"></div>
-
   <div class="container">
+    <div class="leaf leaf1"></div>
+    <div class="leaf leaf2"></div>
+
     <div class="content">
       <div class="welcome">WELCOME TO</div>
       <h1>TRIGAT EDUCATION CENTRE</h1>
-      <p class="subtitle">A premium boutique-style education centre focused on quality learning, student growth, and academic excellence.</p>
-      <div class="established">Established in 2000 • Founder: Reena Dhiman</div>
+
+      <p class="subtitle">
+        A premium boutique-style education centre focused on quality learning,
+        student growth, and academic excellence.
+      </p>
+
+      <div class="established">
+        Established in 2000 • Founder: Reena Dhiman
+      </div>
 
       <div class="cards">
         <div class="card">
           <h3>Quality Teaching</h3>
-          <p>We provide strong fundamentals, personal attention, and effective teaching methods for all students.</p>
+          <p>Strong fundamentals, personal attention, and effective teaching methods.</p>
         </div>
+
         <div class="card">
           <h3>Student Success</h3>
-          <p>Our goal is to build confidence, discipline, and excellence through a professional learning environment.</p>
+          <p>Building confidence, discipline, and excellence.</p>
         </div>
+
         <div class="card">
           <h3>Trusted Since 2000</h3>
-          <p>Trigat Education Centre has been shaping bright futures for over 20+ years with dedication and results.</p>
+          <p>Shaping bright futures for 20+ years with dedication and results.</p>
         </div>
       </div>
 
-      <div class="footer">© 2026 Trigat Education Centre • Founded by Reena Dhiman</div>
+      <div class="footer">
+        © 2026 Trigat Education Centre • Founded by Reena Dhiman
+      </div>
     </div>
   </div>
 
   <script>
     const toggle = document.querySelector('.nav-toggle');
     const menu = document.querySelector('nav ul');
-    toggle.addEventListener('click', ()=>{
-      menu.classList.toggle('active');
+
+    toggle.addEventListener('click', () => {
       toggle.classList.toggle('active');
+      menu.classList.toggle('active');
     });
   </script>
 
