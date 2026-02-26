@@ -15,7 +15,7 @@
     }
 
     /* NAVBAR */
-    .navbar {
+    nav.navbar {
       position: fixed;
       top: 0; left: 0;
       width: 100%;
@@ -29,15 +29,40 @@
       font-weight: 600;
       letter-spacing: 1px;
     }
-    .navbar .logo { font-size:30px; color:#800000; font-weight:900; }
-    .nav-links { display:flex; gap:28px; }
-    .nav-links a {
+
+    nav .logo { font-size:30px; color:#800000; font-weight:900; }
+    nav ul { display:flex; gap:28px; list-style:none; transition:0.3s; }
+    nav ul li a {
       text-decoration:none;
       color:#800000;
       font-size:16px;
-      transition: 0.3s;
+      transition:0.3s;
+      font-weight:600;
     }
-    .nav-links a:hover { color:#D4A017; }
+    nav ul li a:hover { color:#D4A017; }
+
+    /* Hamburger */
+    .nav-toggle {
+      display:none;
+      flex-direction:column;
+      cursor:pointer;
+      gap:5px;
+      z-index:1001;
+    }
+    .nav-toggle span {
+      height:3px;
+      width:25px;
+      background:#800000;
+      border-radius:3px;
+      transition:all 0.3s ease;
+    }
+    .nav-toggle.open span:nth-child(1) {
+      transform:rotate(45deg) translate(5px,5px);
+    }
+    .nav-toggle.open span:nth-child(2) { opacity:0; }
+    .nav-toggle.open span:nth-child(3) {
+      transform:rotate(-45deg) translate(6px,-6px);
+    }
 
     /* Page Title */
     .page-title { text-align:center; color:#800000; font-weight:900; font-size:42px; margin:40px 0 15px; }
@@ -96,11 +121,33 @@
       color:#2D6A4F;
     }
 
-    /* Responsive */
-    @media(max-width:650px){
-      .navbar { flex-direction:column; gap:12px; padding:15px 25px; }
-      .nav-links { flex-wrap:wrap; justify-content:center; gap:16px; margin-top:8px; }
-      .course-card img{ height:150px; }
+    /* RESPONSIVE */
+    @media(max-width:768px){
+      nav ul {
+        position: fixed;
+        top:0;
+        right:-220px;
+        height:100%;
+        width:220px;
+        flex-direction: column;
+        background:#FFF8F0;
+        padding-top:80px;
+        gap:25px;
+        display:flex;
+        box-shadow:-2px 0 12px rgba(0,0,0,0.08);
+        transition:0.3s ease;
+      }
+      nav ul.active { right:0; }
+      nav ul li a { text-align:center; font-size:16px; }
+
+      .nav-toggle { display:flex; }
+    }
+
+    @media(max-width:480px){
+      h1.page-title { font-size:35px; }
+      .page-subtitle { font-size:12px; }
+      .courses-container { gap:20px; }
+      .course-card img { height:150px; }
     }
   </style>
 </head>
@@ -108,18 +155,21 @@
 <body>
 
   <!-- NAVBAR -->
-  <header>
-    <nav class="navbar">
-      <div class="logo">TRIGAT</div>
-      <div class="nav-links">
-        <a href="index.html">Home</a>
-        <a href="courses.html">Explore Courses</a>
-        <a href="gallery.html">Gallery</a>
-        <a href="about.html">About us</a>
-        <a href="contact.html">Contact Us</a>
-      </div>
-    </nav>
-  </header>
+  <nav class="navbar">
+    <div class="logo">TRIGAT</div>
+    <div class="nav-toggle">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="courses.html">Explore Courses</a></li>
+      <li><a href="gallery.html">Gallery</a></li>
+      <li><a href="about.html">About us</a></li>
+      <li><a href="contact.html">Contact Us</a></li>
+    </ul>
+  </nav>
 
   <!-- Page Title -->
   <h1 class="page-title">Our Courses</h1>
@@ -167,6 +217,16 @@
   <div class="footer">
     © 2026 Trigat Education Centre • Designed by Seltrix
   </div>
+
+  <script>
+    const toggle = document.querySelector('.nav-toggle');
+    const menu = document.querySelector('nav ul');
+
+    toggle.addEventListener('click', () => {
+      menu.classList.toggle('active');
+      toggle.classList.toggle('open');
+    });
+  </script>
 
 </body>
 </html>

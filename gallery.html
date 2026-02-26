@@ -16,7 +16,7 @@
     }
 
     /* NAVBAR */
-    .navbar {
+    nav.navbar {
       position: fixed;
       top: 0;
       left: 0;
@@ -32,24 +32,54 @@
       letter-spacing: 1px;
     }
 
-    .navbar .logo {
+    nav .logo {
       font-size: 30px;
       color: #800000;
     }
 
-    .nav-links {
+    nav ul {
       display: flex;
       gap: 28px;
+      list-style: none;
+      transition: 0.3s ease;
     }
 
-    .nav-links a {
+    nav ul li a {
       text-decoration: none;
       color: #800000;
       font-size: 16px;
       transition: color 0.3s ease;
+      font-weight: 600;
     }
 
-    .nav-links a:hover { color: #D4A017; }
+    nav ul li a:hover { color: #D4A017; }
+
+    /* Hamburger */
+    .nav-toggle {
+      display: none;
+      flex-direction: column;
+      cursor: pointer;
+      gap: 5px;
+      z-index: 1001;
+    }
+
+    .nav-toggle span {
+      height: 3px;
+      width: 25px;
+      background: #800000;
+      border-radius: 3px;
+      transition: all 0.3s ease;
+    }
+
+    .nav-toggle.open span:nth-child(1) {
+      transform: rotate(45deg) translate(5px, 5px);
+    }
+    .nav-toggle.open span:nth-child(2) {
+      opacity: 0;
+    }
+    .nav-toggle.open span:nth-child(3) {
+      transform: rotate(-45deg) translate(6px, -6px);
+    }
 
     /* MAIN FRAME */
     .container {
@@ -210,13 +240,41 @@
     }
 
     /* RESPONSIVE */
-    @media (max-width: 650px) {
-      body { padding-top: 95px; }
-      h1 { font-size: 38px; }
-      .container { padding: 60px 20px; }
-      .subtitle { font-size: 16px; margin-bottom: 35px; }
-      .nav-links { gap: 16px; flex-wrap: wrap; margin-top: 8px; }
-      .nav-links a { font-size: 14px; }
+    @media (max-width: 768px) {
+      nav ul {
+        position: fixed;
+        top: 0;
+        right: -220px;
+        height: 100%;
+        width: 220px;
+        flex-direction: column;
+        background: #FFF8F0;
+        padding-top: 80px;
+        gap: 25px;
+        display: flex;
+        box-shadow: -2px 0 12px rgba(0,0,0,0.08);
+        transition: 0.3s ease;
+      }
+
+      nav ul.active {
+        right: 0;
+      }
+
+      nav ul li a {
+        text-align: center;
+        font-size: 16px;
+      }
+
+      .nav-toggle {
+        display: flex;
+      }
+    }
+
+    @media (max-width: 480px) {
+      h1 { font-size: 35px; }
+      .subtitle { font-size: 12px; }
+      .gallery-container { gap: 20px; }
+      .gallery-item img { height: 200px; }
     }
   </style>
 </head>
@@ -224,18 +282,21 @@
 <body>
 
   <!-- NAVBAR -->
-  <header>
-    <nav class="navbar">
-      <div class="logo">TRIGAT</div>
-      <div class="nav-links">
-        <a href="index.html">Home</a>
-        <a href="courses.html">Explore Courses</a>
-        <a href="gallery.html">Gallery</a>
-        <a href="about.html">About Us</a>
-        <a href="contact.html">Contact Us</a>
-      </div>
-    </nav>
-  </header>
+  <nav class="navbar">
+    <div class="logo">TRIGAT</div>
+    <div class="nav-toggle">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="courses.html">Explore Courses</a></li>
+      <li><a href="gallery.html">Gallery</a></li>
+      <li><a href="about.html">About Us</a></li>
+      <li><a href="contact.html">Contact Us</a></li>
+    </ul>
+  </nav>
 
   <!-- LEAVES -->
   <div class="leaf leaf1"></div>
@@ -263,73 +324,10 @@
           <img src="images/img2.jpeg" alt="Gallery Image 2">
         </div>
 
-        <div class="gallery-item" onclick="openLightbox(this)">
-          <img src="images/img3.jpeg" alt="Gallery Image 3">
-        </div>
-
-        <div class="gallery-item" onclick="openLightbox(this)">
-          <img src="images/img4.jpeg" alt="Gallery Image 4">
-        </div>
-
-        <div class="gallery-item" onclick="openLightbox(this)">
-          <img src="images/img5.jpeg" alt="Gallery Image 5">
-        </div>
-
-        <div class="gallery-item" onclick="openLightbox(this)">
-          <img src="images/img6.jpeg" alt="Gallery Image 6">
-        </div>
-
-        <div class="gallery-item" onclick="openLightbox(this)">
-          <img src="images/img7.jpeg" alt="Gallery Image 7">
-        </div>
-
-        <div class="gallery-item" onclick="openLightbox(this)">
-          <img src="images/img8.jpeg" alt="Gallery Image 8">
-        </div>
-
-        <div class="gallery-item" onclick="openLightbox(this)">
-          <img src="images/img9.jpeg" alt="Gallery Image 9">
-        </div>
-
-        <div class="gallery-item" onclick="openLightbox(this)">
-          <img src="images/img10.jpeg" alt="Gallery Image 10">
-        </div>
-
-        <div class="gallery-item" onclick="openLightbox(this)">
-          <img src="images/img11.jpeg" alt="Gallery Image 11">
-        </div>
-
-        <div class="gallery-item" onclick="openLightbox(this)">
-          <img src="images/img12.jpeg" alt="Gallery Image 12">
-        </div>
-
-        <div class="gallery-item" onclick="openLightbox(this)">
-          <img src="images/img13.jpeg" alt="Gallery Image 13">
-        </div>
-
-        <div class="gallery-item" onclick="openLightbox(this)">
-          <img src="images/img14.jpeg" alt="Gallery Image 14">
-        </div>
-
-        <div class="gallery-item" onclick="openLightbox(this)">
-          <img src="images/img15.jpeg" alt="Gallery Image 15">
-        </div>
-
-        <div class="gallery-item" onclick="openLightbox(this)">
-          <img src="images/img16.jpeg" alt="Gallery Image 16">
-        </div>
-
-        <div class="gallery-item" onclick="openLightbox(this)">
-          <img src="images/img17.jpeg" alt="Gallery Image 17">
-        </div>
-
-        <div class="gallery-item" onclick="openLightbox(this)">
-          <img src="images/img18.jpeg" alt="Gallery Image 18">
-        </div>
+        <!-- Add other images as needed -->
 
       </div>
 
-      <!-- FOOTER -->
       <div class="footer">
         © 2026 Trigat Education Centre • All Rights Reserved
       </div>
@@ -343,6 +341,14 @@
   </div>
 
   <script>
+    const toggle = document.querySelector('.nav-toggle');
+    const menu = document.querySelector('nav ul');
+
+    toggle.addEventListener('click', () => {
+      menu.classList.toggle('active');
+      toggle.classList.toggle('open');
+    });
+
     function openLightbox(element) {
       let imgSrc = element.querySelector("img").src;
       document.getElementById("lightbox-img").src = imgSrc;
