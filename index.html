@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Trigat Education Centre</title>
 
   <style>
@@ -11,15 +11,15 @@
     body {
       min-height: 100vh;
       background: #FFF8F0;
-      padding-top: 80px; /* space for navbar */
+      padding-top: 80px;
       overflow-x: hidden;
     }
 
     /* NAVBAR */
     nav.navbar {
       position: fixed;
-      top: 0;
-      left: 0;
+      top:0;
+      left:0;
       width: 100%;
       z-index: 1000;
       padding: 18px 50px;
@@ -28,8 +28,6 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-      font-weight: 600;
-      letter-spacing: 1px;
     }
 
     nav .logo {
@@ -42,24 +40,24 @@
       display: flex;
       gap: 28px;
       list-style: none;
-      transition: 0.3s ease;
     }
 
     nav ul li a {
       text-decoration: none;
       color: #800000;
       font-size: 16px;
-      transition: color 0.3s ease;
+      font-weight: 600;
+      transition: color 0.3s;
     }
 
     nav ul li a:hover { color: #D4A017; }
 
-    /* HAMBURGER */
+    /* HAMBURGER MENU */
     .nav-toggle {
       display: none;
       flex-direction: column;
-      cursor: pointer;
       gap: 5px;
+      cursor: pointer;
       z-index: 1100;
     }
 
@@ -72,188 +70,107 @@
     }
 
     .nav-toggle.active span:nth-child(1) {
-      transform: rotate(45deg) translate(5px, 5px);
+      transform: rotate(45deg) translate(5px,5px);
     }
     .nav-toggle.active span:nth-child(2) { opacity: 0; }
     .nav-toggle.active span:nth-child(3) {
-      transform: rotate(-45deg) translate(5px, -5px);
+      transform: rotate(-45deg) translate(5px,-5px);
     }
 
-    /* MAIN FRAME */
+    /* SIDE MENU FOR MOBILE */
+    @media (max-width: 1024px) { /* make it trigger for all tablets and phones */
+      nav ul {
+        position: fixed;
+        top:0;
+        right: -260px;
+        width: 260px;
+        height: 100%;
+        flex-direction: column;
+        background: #FFF3E0; /* creamy */
+        padding-top: 80px;
+        gap: 25px;
+        transition: right 0.3s ease;
+      }
+
+      nav ul li a {
+        text-align: center;
+        font-size: 18px;
+        color: #800000;
+      }
+
+      nav ul.active { right: 0; }
+
+      .nav-toggle { display: flex; }
+    }
+
+    /* MAIN CONTAINER */
     .container {
       width: 100%;
       max-width: 1100px;
       margin: 0 auto;
-      background: rgba(255, 255, 255, 0.85);
+      background: rgba(255,255,255,0.85);
       backdrop-filter: blur(12px);
       border-radius: 30px;
       padding: 80px 50px;
       position: relative;
       border: 12px solid #D4A017;
-      box-shadow: 0px 12px 35px rgba(0, 0, 0, 0.08),
-                  inset 0 0 10px rgba(212,160,23,0.15);
+      box-shadow: 0 12px 35px rgba(0,0,0,0.08), inset 0 0 10px rgba(212,160,23,0.15);
       overflow: hidden;
     }
 
-    /* LEAVES */
     .leaf {
       position: absolute;
       width: 220px;
       height: 220px;
       background: radial-gradient(circle at 30% 30%, #C1DAB0, #2D6A4F);
       border-radius: 0 100% 0 100%;
-      opacity: 1.00;
-      z-index: 0;
+      z-index:0;
     }
 
     .leaf::after {
-      content: "";
-      position: absolute;
-      width: 6px;
-      height: 160px;
-      background: rgba(45, 106, 79, 0.4);
-      left: 50%;
-      top: 25px;
+      content:"";
+      position:absolute;
+      width:6px;
+      height:160px;
+      background: rgba(45,106,79,0.4);
+      left:50%;
+      top:25px;
       transform: translateX(-50%) rotate(20deg);
-      border-radius: 10px;
+      border-radius:10px;
     }
 
-    .leaf1 { top: -60px; left: -50px; transform: rotate(-15deg); }
-    .leaf2 { bottom: -60px; right: -50px; transform: rotate(35deg); }
+    .leaf1 { top:-60px; left:-50px; transform: rotate(-15deg);}
+    .leaf2 { bottom:-60px; right:-50px; transform: rotate(35deg); }
 
-    /* CONTENT */
     .content {
-      position: relative;
-      z-index: 2;
       text-align: center;
+      position: relative;
+      z-index:2;
     }
 
-    .welcome {
-      font-size: 14px;
-      font-weight: 700;
-      letter-spacing: 2px;
-      color: #2D6A4F;
-      margin-bottom: 12px;
-      text-transform: uppercase;
-    }
+    .welcome { font-size: 14px; font-weight: 700; letter-spacing: 2px; color:#2D6A4F; margin-bottom:12px; text-transform: uppercase;}
+    h1 { font-size:50px; font-weight:900; color:#800000; margin-bottom:18px;}
+    .subtitle { font-size:17px; font-weight:500; color:#333; max-width:720px; margin:0 auto 35px auto; line-height:1.7;}
+    .established { margin-top:25px; font-size:16px; font-weight:700; color:#2D6A4F; background: rgba(212,160,23,0.15); border:2px solid rgba(212,160,23,0.4); padding:12px 22px; border-radius:60px; display:inline-block; }
 
-    h1 {
-      font-size: 50px;
-      font-weight: 900;
-      color: #800000;
-      margin-bottom: 18px;
-      text-shadow: 1px 1px 6px rgba(0,0,0,0.06);
-    }
+    .cards { margin-top:70px; display:grid; grid-template-columns: repeat(auto-fit,minmax(250px,1fr)); gap:28px;}
+    .card { padding:28px; border-radius:22px; background: rgba(255,255,255,0.85); border:3px solid rgba(212,160,23,0.4); box-shadow:0 8px 20px rgba(0,0,0,0.08); transition:0.3s;}
+    .card:hover { transform: translateY(-10px); border:3px solid #D4A017; }
+    .card h3 { font-size:20px; font-weight:900; color:#800000; margin-bottom:12px;}
+    .card p { font-size:15px; font-weight:500; color:#333; line-height:1.7; }
 
-    .subtitle {
-      font-size: 17px;
-      font-weight: 500;
-      color: #333333;
-      max-width: 720px;
-      margin: 0 auto 35px auto;
-      line-height: 1.7;
-    }
+    .footer { margin-top:60px; font-size:14px; font-weight:700; color:#2D6A4F;}
 
-    .established {
-      margin-top: 25px;
-      font-size: 16px;
-      font-weight: 700;
-      color: #2D6A4F;
-      background: rgba(212, 160, 23, 0.15);
-      border: 2px solid rgba(212, 160, 23, 0.4);
-      padding: 12px 22px;
-      border-radius: 60px;
-      display: inline-block;
-    }
-
-    /* CARDS */
-    .cards {
-      margin-top: 70px;
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 28px;
-    }
-
-    .card {
-      padding: 28px;
-      border-radius: 22px;
-      background: rgba(255, 255, 255, 0.85);
-      border: 3px solid rgba(212,160,23,0.4);
-      box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.08);
-      transition: 0.3s ease;
-    }
-
-    .card:hover {
-      transform: translateY(-10px);
-      border: 3px solid #D4A017;
-    }
-
-    .card h3 {
-      font-size: 20px;
-      font-weight: 900;
-      color: #800000;
-      margin-bottom: 12px;
-    }
-
-    .card p {
-      font-size: 15px;
-      color: #333333;
-      line-height: 1.7;
-      font-weight: 500;
-    }
-
-    /* FOOTER */
-    .footer {
-      margin-top: 60px;
-      font-size: 14px;
-      font-weight: 700;
-      color: #2D6A4F;
-    }
-
-    /* ===== RESPONSIVE ===== */
-    @media (max-width: 992px) {
-      nav ul {
-        position: fixed;
-        top: 0;
-        right: -250px;
-        height: 100%;
-        width: 250px;
-        flex-direction: column;
-        background: #FFF3E0; /* creamy */
-        padding-top: 80px;
-        gap: 25px;
-        display: flex;
-        transition: right 0.3s ease;
-        z-index: 1050;
-      }
-
-      nav ul li a {
-        display:block;
-        padding:15px 0;
-        color:#800000;
-        text-align:center;
-        font-weight:700;
-        font-size:18px;
-      }
-
-      nav ul li a:hover { color:#D4A017; }
-
-      nav ul.active { right: 0; }
-      .nav-toggle { display: flex; }
-    }
-
-    @media (max-width: 480px) {
-      h1 { font-size: 35px; }
-      .subtitle { font-size: 12px; }
-      .cards { gap: 20px; }
-      .card h3 { font-size: 18px; }
-      .card p { font-size: 12px; }
+    @media(max-width:480px){
+      h1 { font-size:35px; }
+      .subtitle { font-size:12px; }
+      .card h3 { font-size:18px; }
+      .card p { font-size:12px; }
     }
   </style>
 </head>
 <body>
 
-  <!-- NAVBAR -->
   <nav class="navbar">
     <div class="logo">TRIGAT</div>
 
@@ -272,24 +189,16 @@
     </ul>
   </nav>
 
-  <!-- LEAVES -->
   <div class="leaf leaf1"></div>
   <div class="leaf leaf2"></div>
 
-  <!-- MAIN CONTENT -->
   <div class="container">
     <div class="content">
       <div class="welcome">WELCOME TO</div>
       <h1>TRIGAT EDUCATION CENTRE</h1>
-      <p class="subtitle">
-        A premium boutique-style education centre focused on quality learning,
-        student growth, and academic excellence.
-      </p>
-      <div class="established">
-        Established in 2000 • Founder: Reena Dhiman
-      </div>
+      <p class="subtitle">A premium boutique-style education centre focused on quality learning, student growth, and academic excellence.</p>
+      <div class="established">Established in 2000 • Founder: Reena Dhiman</div>
 
-      <!-- CARDS -->
       <div class="cards">
         <div class="card">
           <h3>Quality Teaching</h3>
@@ -305,20 +214,16 @@
         </div>
       </div>
 
-      <div class="footer">
-        © 2026 Trigat Education Centre • Founded by Reena Dhiman
-      </div>
+      <div class="footer">© 2026 Trigat Education Centre • Founded by Reena Dhiman</div>
     </div>
   </div>
 
-  <!-- JS FOR HAMBURGER -->
   <script>
     const toggle = document.querySelector('.nav-toggle');
     const menu = document.querySelector('nav ul');
-
-    toggle.addEventListener('click', () => {
+    toggle.addEventListener('click', ()=>{
       menu.classList.toggle('active');
-      toggle.classList.toggle('active'); // cross animation
+      toggle.classList.toggle('active');
     });
   </script>
 
