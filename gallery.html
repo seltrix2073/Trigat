@@ -1,304 +1,303 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Gallery | Trigat Education Centre</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Gallery | Trigat Education Centre</title>
 
-  <style>
-    * { margin:0; padding:0; box-sizing:border-box; font-family:"Poppins",sans-serif; }
+<style>
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:"Poppins", sans-serif;
+}
 
-    body {
-      min-height: 100vh;
-      background: #FFF8F0;
-      padding-top: 80px;
-      overflow-x: hidden;
-    }
+body{
+  background:#FFF8F0;
+  padding-top:90px;
+  overflow-x:hidden;
+}
 
-    /* NAVBAR */
-    .navbar {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      z-index: 1000;
-      padding: 18px 50px;
-      background: rgba(255,248,240,0.95);
-      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      font-weight: 600;
-      letter-spacing: 1px;
-    }
+/* ================= NAVBAR ================= */
+.navbar{
+  position:fixed;
+  top:0;
+  left:0;
+  width:100%;
+  padding:18px 50px;
+  background:rgba(255,248,240,0.95);
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  box-shadow:0 4px 12px rgba(0,0,0,0.08);
+  z-index:1000;
+}
 
-    .navbar .logo {
-      font-size: 30px;
-      color: #800000;
-      font-weight: 900;
-    }
+.logo{
+  font-size:30px;
+  font-weight:900;
+  color:#800000;
+}
 
-    .nav-links {
-      display: flex;
-      gap: 28px;
-    }
+/* Hamburger ALWAYS visible */
+.nav-toggle{
+  display:flex;
+  flex-direction:column;
+  gap:6px;
+  cursor:pointer;
+  z-index:1100;
+}
 
-    .nav-links a {
-      text-decoration: none;
-      color: #800000;
-      font-size: 16px;
-      transition: color 0.3s ease;
-    }
+.nav-toggle span{
+  width:28px;
+  height:3px;
+  background:#800000;
+  transition:0.3s ease;
+}
 
-    .nav-links a:hover { color: #D4A017; }
+/* Cross animation */
+.nav-toggle.active span:nth-child(1){
+  transform:rotate(45deg) translate(5px,5px);
+}
 
-    /* MAIN CONTAINER */
-    .container {
-      width: 100%;
-      max-width: 1100px;
-      margin: 0 auto;
-      background: rgba(255, 255, 255, 0.85);
-      backdrop-filter: blur(12px);
-      border-radius: 30px;
-      padding: 80px 50px;
-      position: relative;
-      border: 12px solid #D4A017;
-      box-shadow: 0px 12px 35px rgba(0, 0, 0, 0.08),
-                  inset 0 0 10px rgba(212,160,23,0.15);
-      overflow: hidden;
-    }
+.nav-toggle.active span:nth-child(2){
+  opacity:0;
+}
 
-    /* LEAVES */
-    .leaf {
-      position: absolute;
-      width: 220px;
-      height: 220px;
-      background: radial-gradient(circle at 30% 30%, #C1DAB0, #2D6A4F);
-      border-radius: 0 100% 0 100%;
-      opacity: 1;
-      z-index: 0;
-    }
+.nav-toggle.active span:nth-child(3){
+  transform:rotate(-45deg) translate(6px,-6px);
+}
 
-    .leaf::after {
-      content: "";
-      position: absolute;
-      width: 6px;
-      height: 160px;
-      background: rgba(45, 106, 79, 0.4);
-      left: 50%;
-      top: 25px;
-      transform: translateX(-50%) rotate(20deg);
-      border-radius: 10px;
-    }
+/* Side Menu */
+.nav-links{
+  position:fixed;
+  top:0;
+  right:-300px;
+  width:280px;
+  height:100%;
+  background:#FFF3E0; /* Creamy */
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  padding-top:110px;
+  gap:30px;
+  transition:0.4s ease;
+  box-shadow:-5px 0 20px rgba(0,0,0,0.15);
+}
 
-    .leaf1 { top: -60px; left: -50px; transform: rotate(-15deg); }
-    .leaf2 { bottom: -60px; right: -50px; transform: rotate(35deg); }
+.nav-links.active{
+  right:0;
+}
 
-    /* CONTENT */
-    .content {
-      position: relative;
-      z-index: 2;
-      text-align: center;
-    }
+.nav-links a{
+  text-decoration:none;
+  font-size:20px;
+  font-weight:700;
+  color:#800000;
+  transition:0.3s;
+}
 
-    .welcome {
-      font-size: 14px;
-      font-weight: 700;
-      letter-spacing: 2px;
-      color: #2D6A4F;
-      margin-bottom: 12px;
-      text-transform: uppercase;
-    }
+.nav-links a:hover{
+  color:#D4A017;
+}
 
-    h1 {
-      font-size: 50px;
-      font-weight: 900;
-      color: #800000;
-      margin-bottom: 18px;
-      text-shadow: 1px 1px 6px rgba(0,0,0,0.06);
-    }
+/* ================= MAIN CONTAINER ================= */
+.container{
+  max-width:1150px;
+  margin:auto;
+  background:rgba(255,255,255,0.85);
+  backdrop-filter:blur(12px);
+  border-radius:30px;
+  padding:80px 50px;
+  border:12px solid #D4A017;
+  box-shadow:0px 12px 35px rgba(0,0,0,0.08),
+             inset 0 0 10px rgba(212,160,23,0.15);
+  position:relative;
+}
 
-    .subtitle {
-      font-size: 17px;
-      font-weight: 500;
-      color: #333333;
-      max-width: 720px;
-      margin: 0 auto 50px auto;
-      line-height: 1.7;
-    }
+/* Decorative Leaves */
+.leaf{
+  position:absolute;
+  width:200px;
+  height:200px;
+  background:radial-gradient(circle at 30% 30%, #D6E8C3, #3E8E66);
+  opacity:0.75;
+  border-radius:0 100% 0 100%;
+  z-index:0;
+}
 
-    /* GALLERY GRID */
-    .gallery-container {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 28px;
-    }
+.leaf1{top:-60px;left:-50px;transform:rotate(-15deg);}
+.leaf2{bottom:-60px;right:-50px;transform:rotate(35deg);}
 
-    .gallery-item {
-      border-radius: 22px;
-      overflow: hidden;
-      background: rgba(255, 255, 255, 0.85);
-      border: 3px solid rgba(212,160,23,0.4);
-      box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.08);
-      cursor: pointer;
-      transition: 0.3s ease;
-      position: relative;
-    }
+.content{
+  position:relative;
+  z-index:2;
+  text-align:center;
+}
 
-    .gallery-item:hover {
-      transform: translateY(-10px);
-      border: 3px solid #D4A017;
-    }
+h1{
+  font-size:48px;
+  font-weight:900;
+  color:#800000;
+  margin-bottom:15px;
+}
 
-    .gallery-item img {
-      width: 100%;
-      height: 240px;
-      object-fit: cover;
-      transition: 0.4s ease;
-    }
+.subtitle{
+  color:#333;
+  margin-bottom:50px;
+}
 
-    .gallery-item:hover img {
-      transform: scale(1.08);
-      filter: brightness(0.75);
-    }
+/* ================= GALLERY ================= */
+.gallery{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+  gap:28px;
+}
 
-    /* LIGHTBOX */
-    .lightbox {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: rgba(0,0,0,0.85);
-      display: none;
-      justify-content: center;
-      align-items: center;
-      z-index: 9999;
-      padding: 20px;
-    }
+.gallery-item{
+  border-radius:22px;
+  overflow:hidden;
+  border:3px solid rgba(212,160,23,0.4);
+  transition:0.3s;
+  cursor:pointer;
+}
 
-    .lightbox img {
-      max-width: 90%;
-      max-height: 85%;
-      border-radius: 25px;
-      border: 5px solid #D4A017;
-      box-shadow: 0px 0px 25px rgba(212, 160, 23, 0.7);
-    }
+.gallery-item:hover{
+  transform:translateY(-8px);
+  border:3px solid #D4A017;
+}
 
-    .lightbox span {
-      position: absolute;
-      top: 25px;
-      right: 40px;
-      font-size: 45px;
-      color: white;
-      cursor: pointer;
-      font-weight: bold;
-      transition: 0.3s ease;
-    }
+.gallery-item img{
+  width:100%;
+  height:240px;
+  object-fit:cover;
+  transition:0.4s;
+}
 
-    .lightbox span:hover {
-      color: #D4A017;
-      transform: scale(1.2);
-    }
+.gallery-item:hover img{
+  transform:scale(1.08);
+  filter:brightness(0.85);
+}
 
-    /* FOOTER */
-    .footer {
-      margin-top: 70px;
-      font-size: 14px;
-      font-weight: 700;
-      color: #2D6A4F;
-      text-align: center;
-    }
+/* ================= LIGHTBOX ================= */
+.lightbox{
+  position:fixed;
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
+  background:rgba(0,0,0,0.85);
+  display:none;
+  justify-content:center;
+  align-items:center;
+  z-index:9999;
+}
 
-    /* RESPONSIVE */
-    @media (max-width: 650px) {
-      body { padding-top: 95px; }
-      h1 { font-size: 38px; }
-      .container { padding: 60px 20px; }
-      .subtitle { font-size: 16px; margin-bottom: 35px; }
-      .nav-links { gap: 16px; flex-wrap: wrap; margin-top: 8px; }
-      .nav-links a { font-size: 14px; }
-      .gallery-item img { height: 180px; }
-    }
-  </style>
+.lightbox img{
+  max-width:90%;
+  max-height:85%;
+  border-radius:20px;
+  border:5px solid #D4A017;
+}
+
+.lightbox span{
+  position:absolute;
+  top:25px;
+  right:40px;
+  font-size:40px;
+  color:white;
+  cursor:pointer;
+}
+
+.footer{
+  margin-top:60px;
+  font-weight:700;
+  color:#2D6A4F;
+}
+</style>
 </head>
 
 <body>
 
-  <!-- NAVBAR -->
-  <header>
-    <nav class="navbar">
-      <div class="logo">TRIGAT</div>
-      <div class="nav-links">
-        <a href="index.html">Home</a>
-        <a href="courses.html">Explore Courses</a>
-        <a href="gallery.html">Gallery</a>
-        <a href="about.html">About Us</a>
-        <a href="contact.html">Contact Us</a>
-      </div>
-    </nav>
-  </header>
+<!-- NAVBAR -->
+<nav class="navbar">
+  <div class="logo">TRIGAT</div>
 
-  <!-- LEAVES -->
-  <div class="leaf leaf1"></div>
-  <div class="leaf leaf2"></div>
+  <div class="nav-toggle" id="toggle">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
 
-  <!-- MAIN CONTENT -->
-  <div class="container">
-    <div class="content">
-      <div class="welcome">OUR MEMORIES</div>
-      <h1>Gallery</h1>
+  <div class="nav-links" id="menu">
+    <a href="index.html">Home</a>
+    <a href="courses.html">Explore Courses</a>
+    <a href="gallery.html">Gallery</a>
+    <a href="about.html">About Us</a>
+    <a href="contact.html">Contact Us</a>
+  </div>
+</nav>
 
-      <p class="subtitle">
-        Explore the beautiful moments of Trigat Education Centre. Our classrooms, events, achievements, and student memories.
-      </p>
+<!-- Decorative Leaves -->
+<div class="leaf leaf1"></div>
+<div class="leaf leaf2"></div>
 
-      <!-- GALLERY GRID -->
-      <div class="gallery-container">
-        <div class="gallery-item" onclick="openLightbox(this)"><img src="images/img1.jpeg" alt="Gallery Image 1"></div>
-        <div class="gallery-item" onclick="openLightbox(this)"><img src="images/img2.jpeg" alt="Gallery Image 2"></div>
-        <div class="gallery-item" onclick="openLightbox(this)"><img src="images/img3.jpeg" alt="Gallery Image 3"></div>
-        <div class="gallery-item" onclick="openLightbox(this)"><img src="images/img4.jpeg" alt="Gallery Image 4"></div>
-        <div class="gallery-item" onclick="openLightbox(this)"><img src="images/img5.jpeg" alt="Gallery Image 5"></div>
-        <div class="gallery-item" onclick="openLightbox(this)"><img src="images/img6.jpeg" alt="Gallery Image 6"></div>
-        <div class="gallery-item" onclick="openLightbox(this)"><img src="images/img7.jpeg" alt="Gallery Image 7"></div>
-        <div class="gallery-item" onclick="openLightbox(this)"><img src="images/img8.jpeg" alt="Gallery Image 8"></div>
-        <div class="gallery-item" onclick="openLightbox(this)"><img src="images/img9.jpeg" alt="Gallery Image 9"></div>
-        <div class="gallery-item" onclick="openLightbox(this)"><img src="images/img10.jpeg" alt="Gallery Image 10"></div>
-        <div class="gallery-item" onclick="openLightbox(this)"><img src="images/img11.jpeg" alt="Gallery Image 11"></div>
-        <div class="gallery-item" onclick="openLightbox(this)"><img src="images/img12.jpeg" alt="Gallery Image 12"></div>
-        <div class="gallery-item" onclick="openLightbox(this)"><img src="images/img13.jpeg" alt="Gallery Image 13"></div>
-        <div class="gallery-item" onclick="openLightbox(this)"><img src="images/img14.jpeg" alt="Gallery Image 14"></div>
-        <div class="gallery-item" onclick="openLightbox(this)"><img src="images/img15.jpeg" alt="Gallery Image 15"></div>
-        <div class="gallery-item" onclick="openLightbox(this)"><img src="images/img16.jpeg" alt="Gallery Image 16"></div>
-        <div class="gallery-item" onclick="openLightbox(this)"><img src="images/img17.jpeg" alt="Gallery Image 17"></div>
-        <div class="gallery-item" onclick="openLightbox(this)"><img src="images/img18.jpeg" alt="Gallery Image 18"></div>
-      </div>
+<div class="container">
+<div class="content">
 
-      <!-- FOOTER -->
-      <div class="footer">
-        © 2026 Trigat Education Centre • All Rights Reserved
-      </div>
+<h1>Gallery</h1>
+<p class="subtitle">
+Explore moments and achievements at Trigat Education Centre.
+</p>
+
+<div class="gallery">
+
+<!-- 18 Images -->
+<script>
+for(let i=1;i<=18;i++){
+  document.write(`
+    <div class="gallery-item" onclick="openLightbox(this)">
+      <img src="images/img${i}.jpeg" alt="Gallery Image ${i}">
     </div>
-  </div>
+  `);
+}
+</script>
 
-  <!-- LIGHTBOX -->
-  <div class="lightbox" id="lightbox">
-    <span onclick="closeLightbox()">&times;</span>
-    <img id="lightbox-img" src="">
-  </div>
+</div>
 
-  <script>
-    function openLightbox(element) {
-      let imgSrc = element.querySelector("img").src;
-      document.getElementById("lightbox-img").src = imgSrc;
-      document.getElementById("lightbox").style.display = "flex";
-    }
+<div class="footer">
+© 2026 Trigat Education Centre • All Rights Reserved
+</div>
 
-    function closeLightbox() {
-      document.getElementById("lightbox").style.display = "none";
-    }
-  </script>
+</div>
+</div>
+
+<!-- LIGHTBOX -->
+<div class="lightbox" id="lightbox">
+  <span onclick="closeLightbox()">×</span>
+  <img id="lightbox-img">
+</div>
+
+<script>
+const toggle=document.getElementById("toggle");
+const menu=document.getElementById("menu");
+
+toggle.addEventListener("click",()=>{
+  toggle.classList.toggle("active");
+  menu.classList.toggle("active");
+});
+
+function openLightbox(element){
+  document.getElementById("lightbox-img").src =
+  element.querySelector("img").src;
+  document.getElementById("lightbox").style.display="flex";
+}
+
+function closeLightbox(){
+  document.getElementById("lightbox").style.display="none";
+}
+</script>
 
 </body>
 </html>

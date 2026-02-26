@@ -1,209 +1,251 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>About Us - Trigat Education Centre</title>
 
   <style>
-    * { margin:0; padding:0; box-sizing:border-box; font-family:"Poppins",sans-serif; }
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: "Poppins", sans-serif;
+    }
 
     body {
-      min-height: 100vh;
       background: #FFF8F0;
       padding-top: 80px;
       overflow-x: hidden;
     }
 
-    /* NAVBAR */
+    /* ================= NAVBAR (REVERTED TO ORIGINAL) ================= */
+
     nav.navbar {
       position: fixed;
-      top: 0; left:0;
+      top: 0;
+      left: 0;
       width: 100%;
-      z-index: 1000;
       padding: 18px 50px;
-      background: rgba(255,248,240,0.95);
+      background: rgba(255, 248, 240, 0.95);
       box-shadow: 0 4px 12px rgba(0,0,0,0.08);
       display: flex;
       justify-content: space-between;
       align-items: center;
-      font-weight: 600;
-      letter-spacing: 1px;
+      z-index: 1000;
     }
-    nav .logo { font-size:30px; color:#800000; font-weight:900; }
-    nav ul { display:flex; gap:28px; list-style:none; transition:0.3s; }
-    nav ul li a {
-      text-decoration:none;
-      color:#800000;
-      font-size:16px;
-      transition:0.3s;
-      font-weight:600;
-    }
-    nav ul li a:hover { color:#D4A017; }
 
-    /* Hamburger */
+    .logo {
+      font-size: 28px;
+      font-weight: 900;
+      color: #800000;
+    }
+
+    /* Original Hamburger Style */
     .nav-toggle {
-      display:none;
-      flex-direction:column;
-      cursor:pointer;
-      gap:5px;
-      z-index:1001;
-    }
-    .nav-toggle span {
-      height:3px;
-      width:25px;
-      background:#800000;
-      border-radius:3px;
-      transition:all 0.3s ease;
-    }
-    .nav-toggle.open span:nth-child(1) {
-      transform:rotate(45deg) translate(5px,5px);
-    }
-    .nav-toggle.open span:nth-child(2) { opacity:0; }
-    .nav-toggle.open span:nth-child(3) {
-      transform:rotate(-45deg) translate(6px,-6px);
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      cursor: pointer;
+      z-index: 1200;
     }
 
-    /* MAIN CONTAINER */
+    .nav-toggle span {
+      width: 28px;
+      height: 3px;
+      background: #800000;
+      border-radius: 4px;
+      transition: 0.3s ease;
+    }
+
+    /* Original Cross animation */
+    .nav-toggle.active span:nth-child(1) {
+      transform: rotate(45deg) translate(6px, 6px);
+    }
+
+    .nav-toggle.active span:nth-child(2) {
+      opacity: 0;
+    }
+
+    .nav-toggle.active span:nth-child(3) {
+      transform: rotate(-45deg) translate(6px, -6px);
+    }
+
+    /* Original Side Menu */
+    nav ul {
+      position: fixed;
+      top: 0;
+      right: -260px;
+      width: 260px;
+      height: 100%;
+      background: #FFF3E0;
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding-top: 100px;
+      gap: 30px;
+      transition: right 0.3s ease;
+      z-index: 1100;
+      box-shadow: -5px 0 25px rgba(0,0,0,0.1);
+    }
+
+    nav ul.active {
+      right: 0;
+    }
+
+    nav ul li {
+        list-style: none;
+    }
+
+    nav ul li a {
+      text-decoration: none;
+      font-size: 18px;
+      font-weight: 700;
+      color: #800000;
+      transition: 0.3s;
+    }
+
+    nav ul li a:hover {
+      color: #D4A017;
+    }
+
+    /* ================= MAIN CONTAINER ================= */
+
     .container {
-      width: 100%;
       max-width: 900px;
-      margin: 0 auto;
-      background: rgba(255, 255, 255, 0.85);
+      margin: 40px auto;
+      background: rgba(255,255,255,0.85);
       backdrop-filter: blur(12px);
       border-radius: 30px;
       padding: 80px 50px;
-      position: relative;
       border: 12px solid #D4A017;
-      box-shadow: 0px 12px 35px rgba(0, 0, 0, 0.08), inset 0 0 10px rgba(212,160,23,0.15);
-      overflow: hidden;
+      box-shadow: 0px 12px 35px rgba(0,0,0,0.08),
+                  inset 0 0 10px rgba(212,160,23,0.15);
       text-align: center;
+      position: relative;
     }
 
-    /* LEAVES */
     .leaf {
       position: absolute;
-      width: 220px; height: 220px;
+      width: 220px;
+      height: 220px;
       background: radial-gradient(circle at 30% 30%, #C1DAB0, #2D6A4F);
       border-radius: 0 100% 0 100%;
-      z-index:0;
+      z-index: 0;
     }
-    .leaf::after {
-      content: "";
-      position: absolute;
-      width: 6px; height: 160px;
-      background: rgba(45,106,79,0.4);
-      left:50%; top:25px;
-      transform: translateX(-50%) rotate(20deg);
-      border-radius:10px;
+
+    .leaf1 { top: -60px; left: -50px; transform: rotate(-15deg); }
+    .leaf2 { bottom: -60px; right: -50px; transform: rotate(35deg); }
+
+    h1 {
+      font-size: 48px;
+      font-weight: 900;
+      color: #800000;
+      margin-bottom: 25px;
+      position: relative;
+      z-index: 1;
     }
-    .leaf1 { top:-60px; left:-50px; transform:rotate(-15deg);}
-    .leaf2 { bottom:-60px; right:-50px; transform:rotate(35deg);}
 
-    /* CONTENT */
-    h1 { font-size:48px; font-weight:900; color:#800000; margin-bottom:25px; }
-    p { font-size:18px; color:#2D6A4F; margin:15px 0; font-weight:500; }
-    a { color:#2D6A4F; text-decoration:none; transition:0.3s; }
-    a:hover { color:#ff69b4; text-decoration:underline; }
+    p {
+      font-size: 18px;
+      color: #2D6A4F;
+      margin: 15px 0;
+      font-weight: 500;
+      position: relative;
+      z-index: 1;
+    }
 
-    .section-title { font-size:14px; font-weight:700; letter-spacing:2px; color:#2D6A4F; margin-bottom:12px; text-transform:uppercase; }
+    .section-title {
+      font-size: 14px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      color: #2D6A4F;
+      margin-bottom: 12px;
+      text-transform: uppercase;
+    }
 
-    /* PEXELS IMAGES */
     .pexels-gallery {
       display: flex;
       justify-content: center;
       gap: 25px;
       margin: 25px 0 40px;
       flex-wrap: wrap;
+      position: relative;
+      z-index: 1;
     }
+
     .pexels-img {
       width: 180px;
       height: 180px;
       border-radius: 50%;
       object-fit: cover;
       box-shadow: 0 6px 15px rgba(0,0,0,0.2);
-      transition: transform 0.4s ease;
-    }
-    .pexels-img:hover { transform: translateY(-10px) scale(1.05); }
-
-    /* Footer */
-    .footer { margin-top:50px; font-size:14px; font-weight:700; color:#2D6A4F; }
-
-    /* RESPONSIVE */
-    @media (max-width:768px){
-      nav ul {
-        position: fixed;
-        top:0;
-        right:-220px;
-        height:100%;
-        width:220px;
-        flex-direction: column;
-        background:#FFF8F0;
-        padding-top:80px;
-        gap:25px;
-        display:flex;
-        box-shadow:-2px 0 12px rgba(0,0,0,0.08);
-        transition:0.3s ease;
-      }
-      nav ul.active { right:0; }
-      nav ul li a { text-align:center; font-size:16px; }
-      .nav-toggle { display:flex; }
+      transition: 0.4s ease;
     }
 
-    @media (max-width:650px){
-      body { padding-top:90px; }
-      h1 { font-size:36px; }
-      .container { padding:60px 20px; }
-      p { font-size:16px; }
-      .pexels-img { width:140px; height:140px; }
+    .pexels-img:hover {
+      transform: translateY(-10px) scale(1.05);
+    }
+
+    .footer {
+      margin-top: 50px;
+      font-size: 14px;
+      font-weight: 700;
+      color: #2D6A4F;
+    }
+
+    @media(max-width: 650px) {
+      nav.navbar { padding: 18px 25px; }
+      .container { padding: 60px 20px; }
+      h1 { font-size: 34px; }
+      .pexels-img { width: 130px; height: 130px; }
     }
   </style>
 </head>
 
 <body>
 
-  <!-- NAVBAR -->
   <nav class="navbar">
     <div class="logo">TRIGAT</div>
-    <div class="nav-toggle">
+
+    <div class="nav-toggle" id="menuBtn">
       <span></span>
       <span></span>
       <span></span>
     </div>
-    <ul>
+
+    <ul id="navMenu">
       <li><a href="index.html">Home</a></li>
       <li><a href="courses.html">Explore Courses</a></li>
       <li><a href="gallery.html">Gallery</a></li>
-      <li><a href="about.html">About us</a></li>
+      <li><a href="about.html">About Us</a></li>
       <li><a href="contact.html">Contact Us</a></li>
     </ul>
   </nav>
 
-  <!-- LEAVES -->
-  <div class="leaf leaf1"></div>
-  <div class="leaf leaf2"></div>
-
-  <!-- ABOUT CONTENT -->
   <div class="container">
+    <div class="leaf leaf1"></div>
+    <div class="leaf leaf2"></div>
+
     <div class="section-title">Who We Are</div>
     <h1>About Trigat Education Centre</h1>
+
     <p>
       Trigat Education Centre is a boutique education hub established in 2000 by Reena Dhiman.
-      Our mission is to provide personalized learning experiences, nurturing creativity, skill,
-      and confidence for every student. We specialize in courses like Fashion Designing, Art & Craft,
-      Beautician, and more.
+      Our mission is to provide personalized learning experiences, nurturing creativity,
+      skill, and confidence for every student.
     </p>
 
-    <!-- Pexels images -->
     <div class="pexels-gallery">
-      <img src="https://images.pexels.com/photos/21006300/pexels-photo-21006300.jpeg" alt="Students learning" class="pexels-img">
-      <img src="https://images.pexels.com/photos/5537490/pexels-photo-5537490.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Girl lying" class="pexels-img">
-      <img src="https://images.pexels.com/photos/4145193/pexels-photo-4145193.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Teachers" class="pexels-img">
+      <img src="https://images.pexels.com/photos/21006300/pexels-photo-21006300.jpeg" class="pexels-img">
+      <img src="https://images.pexels.com/photos/5537490/pexels-photo-5537490.jpeg" class="pexels-img">
+      <img src="https://images.pexels.com/photos/4145193/pexels-photo-4145193.jpeg" class="pexels-img">
     </div>
 
     <p>
-      Our dedicated team of instructors ensures each student receives hands-on guidance and expert mentorship.
-      We focus on building confidence, discipline, and creativity in a supportive environment.
+      We specialize in Fashion Designing, Art & Craft, Beautician, and more,
+      helping students grow professionally in a supportive environment.
     </p>
 
     <div class="footer">
@@ -212,12 +254,20 @@
   </div>
 
   <script>
-    const toggle = document.querySelector('.nav-toggle');
-    const menu = document.querySelector('nav ul');
+    const toggle = document.getElementById('menuBtn');
+    const menu = document.getElementById('navMenu');
 
     toggle.addEventListener('click', () => {
+      toggle.classList.toggle('active');
       menu.classList.toggle('active');
-      toggle.classList.toggle('open');
+    });
+
+    // Close menu when a link is clicked
+    document.querySelectorAll('#navMenu a').forEach(link => {
+      link.addEventListener('click', () => {
+        toggle.classList.remove('active');
+        menu.classList.remove('active');
+      });
     });
   </script>
 

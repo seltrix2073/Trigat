@@ -1,232 +1,261 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Trigat Education Centre - Courses</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Trigat Education Centre - Courses</title>
 
-  <style>
-    * { margin:0; padding:0; box-sizing:border-box; font-family:"Poppins",sans-serif; }
+<style>
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:"Poppins", sans-serif;
+}
 
-    body {
-      background:#FFF8F0;
-      padding-top:80px; /* space for fixed navbar */
-      overflow-x:hidden;
-    }
+body{
+  background:#FFF8F0;
+  padding-top:90px;
+  overflow-x:hidden;
+}
 
-    /* NAVBAR */
-    nav.navbar {
-      position: fixed;
-      top: 0; left: 0;
-      width: 100%;
-      z-index: 1000;
-      padding: 18px 50px;
-      background: rgba(255,248,240,0.95);
-      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      font-weight: 600;
-      letter-spacing: 1px;
-    }
+/* ================= NAVBAR ================= */
+.navbar{
+  position:fixed;
+  top:0;
+  left:0;
+  width:100%;
+  padding:18px 50px;
+  background:rgba(255,248,240,0.95);
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  box-shadow:0 4px 12px rgba(0,0,0,0.08);
+  z-index:1000;
+}
 
-    nav .logo { font-size:30px; color:#800000; font-weight:900; }
-    nav ul { display:flex; gap:28px; list-style:none; transition:0.3s; }
-    nav ul li a {
-      text-decoration:none;
-      color:#800000;
-      font-size:16px;
-      transition:0.3s;
-      font-weight:600;
-    }
-    nav ul li a:hover { color:#D4A017; }
+.logo{
+  font-size:30px;
+  font-weight:900;
+  color:#800000;
+}
 
-    /* Hamburger */
-    .nav-toggle {
-      display:none;
-      flex-direction:column;
-      cursor:pointer;
-      gap:5px;
-      z-index:1001;
-    }
-    .nav-toggle span {
-      height:3px;
-      width:25px;
-      background:#800000;
-      border-radius:3px;
-      transition:all 0.3s ease;
-    }
-    .nav-toggle.open span:nth-child(1) {
-      transform:rotate(45deg) translate(5px,5px);
-    }
-    .nav-toggle.open span:nth-child(2) { opacity:0; }
-    .nav-toggle.open span:nth-child(3) {
-      transform:rotate(-45deg) translate(6px,-6px);
-    }
+/* Hamburger always visible */
+.nav-toggle{
+  display:flex;
+  flex-direction:column;
+  gap:6px;
+  cursor:pointer;
+  z-index:1100;
+}
 
-    /* Page Title */
-    .page-title { text-align:center; color:#800000; font-weight:900; font-size:42px; margin:40px 0 15px; }
-    .page-subtitle { text-align:center; color:#2D6A4F; font-weight:500; font-size:17px; max-width:720px; margin:0 auto 40px; }
+.nav-toggle span{
+  width:28px;
+  height:3px;
+  background:#800000;
+  transition:0.3s ease;
+}
 
-    /* Courses Grid */
-    .courses-container {
-      max-width:1100px;
-      margin:0 auto;
-      display:grid;
-      grid-template-columns:repeat(auto-fit, minmax(250px, 1fr));
-      gap:28px;
-      padding-bottom:50px;
-    }
-    .course-card {
-      background:#fff;
-      border-radius:22px;
-      border:4px solid #D4A017;
-      box-shadow:0px 8px 25px rgba(0,0,0,0.12);
-      overflow:hidden;
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-    }
-    .course-card:hover {
-      transform:translateY(-8px);
-      box-shadow:0px 15px 35px rgba(0,0,0,0.25);
-    }
-    .course-card img {
-      width:100%;
-      height:200px;
-      object-fit:cover;
-      display:block;
-    }
-    .course-content {
-      padding:20px;
-      text-align:center;
-    }
-    .course-content h3 {
-      font-size:20px;
-      font-weight:900;
-      color:#800000;
-      margin-bottom:12px;
-    }
-    .course-content p {
-      font-size:15px;
-      color:#333;
-      line-height:1.7;
-      font-weight:500;
-    }
+/* Cross animation */
+.nav-toggle.active span:nth-child(1){
+  transform:rotate(45deg) translate(5px,5px);
+}
 
-    /* Footer */
-    .footer {
-      max-width:1100px;
-      margin:50px auto 20px;
-      text-align:center;
-      font-weight:700;
-      color:#2D6A4F;
-    }
+.nav-toggle.active span:nth-child(2){
+  opacity:0;
+}
 
-    /* RESPONSIVE */
-    @media(max-width:768px){
-      nav ul {
-        position: fixed;
-        top:0;
-        right:-220px;
-        height:100%;
-        width:220px;
-        flex-direction: column;
-        background:#FFF8F0;
-        padding-top:80px;
-        gap:25px;
-        display:flex;
-        box-shadow:-2px 0 12px rgba(0,0,0,0.08);
-        transition:0.3s ease;
-      }
-      nav ul.active { right:0; }
-      nav ul li a { text-align:center; font-size:16px; }
+.nav-toggle.active span:nth-child(3){
+  transform:rotate(-45deg) translate(6px,-6px);
+}
 
-      .nav-toggle { display:flex; }
-    }
+/* Side menu */
+.nav-links{
+  position:fixed;
+  top:0;
+  right:-300px;
+  width:280px;
+  height:100%;
+  background:#FFF3E0; /* Creamy */
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  padding-top:110px;
+  gap:30px;
+  transition:0.4s ease;
+  box-shadow:-5px 0 20px rgba(0,0,0,0.15);
+}
 
-    @media(max-width:480px){
-      h1.page-title { font-size:35px; }
-      .page-subtitle { font-size:12px; }
-      .courses-container { gap:20px; }
-      .course-card img { height:150px; }
-    }
-  </style>
+.nav-links.active{
+  right:0;
+}
+
+.nav-links a{
+  text-decoration:none;
+  font-size:20px;
+  font-weight:700;
+  color:#800000;
+  transition:0.3s;
+}
+
+.nav-links a:hover{
+  color:#D4A017;
+}
+
+/* ================= PAGE TITLE ================= */
+.page-title{
+  text-align:center;
+  color:#800000;
+  font-weight:900;
+  font-size:42px;
+  margin:40px 0 15px;
+}
+
+.page-subtitle{
+  text-align:center;
+  color:#2D6A4F;
+  font-weight:500;
+  font-size:17px;
+  max-width:720px;
+  margin:0 auto 40px;
+}
+
+/* ================= COURSES GRID ================= */
+.courses-container{
+  max-width:1100px;
+  margin:0 auto 60px;
+  display:grid;
+  grid-template-columns:repeat(auto-fit, minmax(250px, 1fr));
+  gap:28px;
+  padding:0 20px;
+}
+
+.course-card{
+  background:#fff;
+  border-radius:22px;
+  border:4px solid #D4A017;
+  box-shadow:0px 8px 25px rgba(0,0,0,0.12);
+  overflow:hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.course-card:hover{
+  transform:translateY(-8px);
+  box-shadow:0px 15px 35px rgba(0,0,0,0.25);
+}
+
+.course-card img{
+  width:100%;
+  height:200px;
+  object-fit:cover;
+}
+
+.course-content{
+  padding:20px;
+  text-align:center;
+}
+
+.course-content h3{
+  font-size:20px;
+  font-weight:900;
+  color:#800000;
+  margin-bottom:12px;
+}
+
+.course-content p{
+  font-size:15px;
+  color:#333;
+  line-height:1.7;
+  font-weight:500;
+}
+
+/* Footer */
+.footer{
+  text-align:center;
+  font-weight:700;
+  color:#2D6A4F;
+  margin-bottom:20px;
+}
+</style>
 </head>
 
 <body>
 
-  <!-- NAVBAR -->
-  <nav class="navbar">
-    <div class="logo">TRIGAT</div>
-    <div class="nav-toggle">
-      <span></span>
-      <span></span>
-      <span></span>
-    </div>
-    <ul>
-      <li><a href="index.html">Home</a></li>
-      <li><a href="courses.html">Explore Courses</a></li>
-      <li><a href="gallery.html">Gallery</a></li>
-      <li><a href="about.html">About us</a></li>
-      <li><a href="contact.html">Contact Us</a></li>
-    </ul>
-  </nav>
+<!-- NAVBAR -->
+<nav class="navbar">
+  <div class="logo">TRIGAT</div>
 
-  <!-- Page Title -->
-  <h1 class="page-title">Our Courses</h1>
-  <p class="page-subtitle">
-    Explore our premium courses designed to unlock creativity, skill, and professional growth.
-  </p>
-
-  <!-- Courses Section -->
-  <div class="courses-container">
-
-    <div class="course-card">
-      <img src="https://images.pexels.com/photos/2034538/pexels-photo-2034538.jpeg" alt="Fashion Designing">
-      <div class="course-content">
-        <h3>Fashion Designing</h3>
-        <p>Duration: 3 months / 6 months / 9 months / 1 year</p>
-      </div>
-    </div>
-
-    <div class="course-card">
-      <img src="https://images.pexels.com/photos/5034049/pexels-photo-5034049.jpeg" alt="Art & Craft">
-      <div class="course-content">
-        <h3>Art & Craft</h3>
-        <p>Duration: 3 months / 6 months / 9 months / 1 year</p>
-      </div>
-    </div>
-
-    <div class="course-card">
-      <img src="https://images.pexels.com/photos/33692584/pexels-photo-33692584.jpeg" alt="Beautician">
-      <div class="course-content">
-        <h3>Beautician</h3>
-        <p>Duration: 3 months / 6 months / 9 months / 1 year</p>
-      </div>
-    </div>
-
-    <div class="course-card">
-      <img src="https://images.pexels.com/photos/3693232/pexels-photo-3693232.jpeg" alt="Crochet">
-      <div class="course-content">
-        <h3>Crochet</h3>
-        <p>Duration: 3 months / 6 months / 9 months / 1 year</p>
-      </div>
-    </div>
-
+  <div class="nav-toggle" id="toggle">
+    <span></span>
+    <span></span>
+    <span></span>
   </div>
 
-  <div class="footer">
-    © 2026 Trigat Education Centre • Designed by Seltrix
+  <div class="nav-links" id="menu">
+    <a href="index.html">Home</a>
+    <a href="courses.html">Explore Courses</a>
+    <a href="gallery.html">Gallery</a>
+    <a href="about.html">About Us</a>
+    <a href="contact.html">Contact Us</a>
+  </div>
+</nav>
+
+<!-- Page Title -->
+<h1 class="page-title">Our Courses</h1>
+<p class="page-subtitle">
+Explore our premium courses designed to unlock creativity, skill, and professional growth.
+</p>
+
+<!-- Courses -->
+<div class="courses-container">
+
+  <div class="course-card">
+    <img src="https://images.pexels.com/photos/2034538/pexels-photo-2034538.jpeg" alt="Fashion Designing">
+    <div class="course-content">
+      <h3>Fashion Designing</h3>
+      <p>Duration: 3 / 6 / 9 months / 1 year</p>
+    </div>
   </div>
 
-  <script>
-    const toggle = document.querySelector('.nav-toggle');
-    const menu = document.querySelector('nav ul');
+  <div class="course-card">
+    <img src="https://images.pexels.com/photos/5034049/pexels-photo-5034049.jpeg" alt="Art & Craft">
+    <div class="course-content">
+      <h3>Art & Craft</h3>
+      <p>Duration: 3 / 6 / 9 months / 1 year</p>
+    </div>
+  </div>
 
-    toggle.addEventListener('click', () => {
-      menu.classList.toggle('active');
-      toggle.classList.toggle('open');
-    });
-  </script>
+  <div class="course-card">
+    <img src="https://images.pexels.com/photos/33692584/pexels-photo-33692584.jpeg" alt="Beautician">
+    <div class="course-content">
+      <h3>Beautician</h3>
+      <p>Duration: 3 / 6 / 9 months / 1 year</p>
+    </div>
+  </div>
+
+  <div class="course-card">
+    <img src="https://images.pexels.com/photos/3693232/pexels-photo-3693232.jpeg" alt="Crochet">
+    <div class="course-content">
+      <h3>Crochet</h3>
+      <p>Duration: 3 / 6 / 9 months / 1 year</p>
+    </div>
+  </div>
+
+</div>
+
+<div class="footer">
+© 2026 Trigat Education Centre • Designed by Seltrix
+</div>
+
+<script>
+const toggle=document.getElementById("toggle");
+const menu=document.getElementById("menu");
+
+toggle.addEventListener("click",()=>{
+  toggle.classList.toggle("active");
+  menu.classList.toggle("active");
+});
+</script>
 
 </body>
 </html>
