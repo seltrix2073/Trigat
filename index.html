@@ -18,8 +18,7 @@
     /* NAVBAR */
     nav.navbar {
       position: fixed;
-      top: 0;
-      left: 0;
+      top: 0; left: 0;
       width: 100%;
       z-index: 1000;
       padding: 18px 50px;
@@ -32,7 +31,11 @@
       letter-spacing: 1px;
     }
 
-    nav .logo { font-size: 30px; color: #800000; }
+    nav .logo {
+      font-size: 30px;
+      color: #800000;
+      font-weight: 900;
+    }
 
     nav ul {
       display: flex;
@@ -50,12 +53,13 @@
 
     nav ul li a:hover { color: #D4A017; }
 
+    /* HAMBURGER */
     .nav-toggle {
       display: none;
       flex-direction: column;
       cursor: pointer;
       gap: 5px;
-      z-index:1100;
+      z-index: 1100;
     }
 
     .nav-toggle span {
@@ -66,7 +70,6 @@
       transition: all 0.3s ease;
     }
 
-    /* CROSS ANIMATION */
     .nav-toggle.active span:nth-child(1) {
       transform: rotate(45deg) translate(5px, 5px);
     }
@@ -94,52 +97,43 @@
     /* LEAVES */
     .leaf {
       position: absolute;
-      width: 220px;
-      height: 220px;
+      width: 220px; height: 220px;
       background: radial-gradient(circle at 30% 30%, #C1DAB0, #2D6A4F);
       border-radius: 0 100% 0 100%;
       z-index: 0;
     }
+
     .leaf::after {
       content: "";
       position: absolute;
-      width: 6px;
-      height: 160px;
-      background: rgba(45, 106, 79, 0.4);
-      left: 50%;
-      top: 25px;
+      width: 6px; height: 160px;
+      background: rgba(45,106,79,0.4);
+      left:50%; top:25px;
       transform: translateX(-50%) rotate(20deg);
-      border-radius: 10px;
+      border-radius:10px;
     }
-    .leaf1 { top: -60px; left: -50px; transform: rotate(-15deg); }
-    .leaf2 { bottom: -60px; right: -50px; transform: rotate(35deg); }
+
+    .leaf1 { top:-60px; left:-50px; transform:rotate(-15deg); }
+    .leaf2 { bottom:-60px; right:-50px; transform:rotate(35deg); }
 
     /* CONTENT */
     .content { position: relative; z-index: 2; text-align: center; }
+
     .welcome {
-      font-size: 14px;
-      font-weight: 700;
-      letter-spacing: 2px;
-      color: #2D6A4F;
-      margin-bottom: 12px;
-      text-transform: uppercase;
+      font-size: 14px; font-weight: 700; letter-spacing: 2px;
+      color: #2D6A4F; margin-bottom: 12px; text-transform: uppercase;
     }
 
     h1 {
-      font-size: 50px;
-      font-weight: 900;
-      color: #800000;
-      margin-bottom: 18px;
+      font-size: 50px; font-weight: 900;
+      color: #800000; margin-bottom: 18px;
       text-shadow: 1px 1px 6px rgba(0,0,0,0.06);
     }
 
     .subtitle {
-      font-size: 17px;
-      font-weight: 500;
-      color: #333333;
-      max-width: 720px;
-      margin: 0 auto 35px auto;
-      line-height: 1.7;
+      font-size: 17px; font-weight: 500;
+      color: #333333; max-width: 720px;
+      margin: 0 auto 35px auto; line-height: 1.7;
     }
 
     .established {
@@ -155,61 +149,51 @@
     }
 
     /* CARDS */
-    .cards {
-      margin-top: 70px;
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 28px;
-    }
+    .cards { margin-top: 70px; display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 28px; }
+
     .card {
       padding: 28px;
       border-radius: 22px;
       background: rgba(255, 255, 255, 0.85);
       border: 3px solid rgba(212,160,23,0.4);
-      box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.08);
+      box-shadow: 0px 8px 20px rgba(0,0,0,0.08);
       transition: 0.3s ease;
     }
-    .card:hover {
-      transform: translateY(-10px);
-      border: 3px solid #D4A017;
-    }
+
+    .card:hover { transform: translateY(-10px); border: 3px solid #D4A017; }
+
     .card h3 { font-size: 20px; font-weight: 900; color: #800000; margin-bottom: 12px; }
     .card p { font-size: 15px; color: #333333; line-height: 1.7; font-weight: 500; }
 
     /* FOOTER */
     .footer { margin-top: 60px; font-size: 14px; font-weight: 700; color: #2D6A4F; }
 
-    /* ===== RESPONSIVE / MOBILE MENU ===== */
+    /* RESPONSIVE */
     @media (max-width: 768px) {
       nav.navbar { padding: 15px 5%; }
+
       nav ul {
         position: fixed;
-        top: 0;
-        right: -220px;
+        top: 0; right: -250px;
         height: 100%;
-        width: 220px;
+        width: 250px;
         flex-direction: column;
-        background: #FFF3E0; /* creamy side menu */
+        background: #FFF3E0; /* creamy */
         padding-top: 80px;
         gap: 25px;
         display: flex;
-        transition: 0.3s ease;
+        transition: right 0.3s ease;
+        z-index: 1050;
       }
-      nav ul li a {
-        display: block;
-        padding: 15px 0;
-        color: #800000; /* dark red text */
-        text-align: center;
-        font-weight: 700;
-      }
-      nav ul li a:hover { color: #D4A017; }
-      nav ul.active { right: 0; }
-      .nav-toggle { display: flex; }
-    }
 
-    @media (max-width: 480px) {
+      nav ul li a { display:block; padding:15px 0; color:#800000; text-align:center; font-weight:700; font-size:18px; }
+      nav ul li a:hover { color:#D4A017; }
+      nav ul.active { right: 0; }
+
+      .nav-toggle { display: flex; position: fixed; top: 25px; right: 30px; }
+
       h1 { font-size: 35px; }
-      .subtitle { font-size: 12px; }
+      .subtitle { font-size: 14px; }
       .cards { gap: 20px; }
       .card h3 { font-size: 18px; }
       .card p { font-size: 12px; }
@@ -230,7 +214,7 @@
 
     <ul>
       <li><a href="index.html">Home</a></li>
-      <li><a href="courses.html">Explore courses</a></li>
+      <li><a href="courses.html">Explore Courses</a></li>
       <li><a href="gallery.html">Gallery</a></li>
       <li><a href="about.html">About us</a></li>
       <li><a href="contact.html">Contact us</a></li>
@@ -271,7 +255,7 @@
       </div>
 
       <div class="footer">
-        © 2026 Trigat Education Centre • founded by Reena Dhiman
+        © 2026 Trigat Education Centre • Founded by Reena Dhiman
       </div>
     </div>
   </div>
@@ -283,7 +267,7 @@
 
     toggle.addEventListener('click', () => {
       menu.classList.toggle('active');
-      toggle.classList.toggle('active'); // cross animation
+      toggle.classList.toggle('active');
     });
   </script>
 
